@@ -1,0 +1,114 @@
+<view class="page-container">
+  
+  <view class="header">
+    
+    <view class="header-title-area">
+      <view>
+        <text class="title" bindlongpress="handleTitleLongPress">Bean to Cup 今天喝什么</text>
+        <text class="subtitle">记录每一杯风味</text>
+      </view>
+    </view>
+
+    <view class="control-bar">
+      <view class="sort-group">
+        <view class="slider-bg {{sortBy === 'score' ? 'move-right' : ''}}"></view>
+        <view class="sort-btn {{sortBy === 'date' ? 'active' : ''}}" bindtap="toggleSort" data-type="date">📅 开封日期</view>
+        <view class="sort-btn {{sortBy === 'score' ? 'active' : ''}}" bindtap="toggleSort" data-type="score">⭐️ 评分</view>
+      </view>
+
+      <scroll-view class="filter-scroll" scroll-x enable-flex>
+        <block wx:for="{{filterCategories}}" wx:key="*this">
+          <view class="filter-chip {{activeFilter === item ? 'active' : ''}}" bindtap="onFilterTap" data-tag="{{item}}">
+            {{item}}
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+  </view> <view class="list-container">
+    <block wx:for="{{coffees}}" wx:key="_id">
+      <view class="card" bindtap="goToDetail" data-item="{{item}}">
+        <view class="card-img-box">
+          <image wx:if="{{item.image}}" class="card-img" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view wx:else class="card-img-placeholder">
+            <text class="placeholder-icon">☕️</text>
+          </view>
+          
+          <view class="img-date-bar" wx:if="{{item.open_date}}">
+            <text class="date-text">{{item.open_date}}</text>
+          </view>
+        </view>
+        
+        <view class="card-info">
+          <view class="card-main">
+            <text class="eyebrow-country" wx:if="{{item.country}}">{{item.country}}</text>
+            <view class="card-header">
+              <text class="coffee-name">{{item.name}}</text>
+              <view wx:if="{{item.score >= 9}}" class="high-score-dot"></view>
+            </view>
+          </view>
+
+          <view class="card-sub">
+            <view class="roaster-row">
+              <text class="roaster-icon">☕️</text>
+              <text class="roaster-name">{{item.roaster}}</text>
+            </view>
+            <view class="card-footer">
+              <view class="tags">
+                <text class="tag" wx:if="{{item.process}}">{{item.process}}</text>
+              </view>
+              <text class="score-text" wx:if="{{item.score > 0}}">{{item.score}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <view class="loading-footer" wx:if="{{!loading && coffees.length > 0}}">
+      <view wx:if="{{hasMore}}" class="loading-spinner">
+        <view class="spinner-dot"></view>
+        <view class="spinner-dot"></view>
+        <view class="spinner-dot"></view>
+      </view>
+      <view wx:else class="no-more-text">- 到底啦，现在就去喝一杯 -</view>
+    </view>
+    
+    <view wx:if="{{!loading && coffees.length === 0}}" class="empty-state">
+      没有找到符合条件的咖啡 🥺
+    </view>
+    
+    <view wx:if="{{loading}}" class="skeleton">
+      <block wx:for="{{[1,2,3,4]}}" wx:key="*this">
+        <view class="skeleton-card">
+          <view class="sk-img"></view>
+          
+          <view class="sk-info">
+            <view class="sk-row sk-eyebrow"></view>
+            <view class="sk-row sk-title"></view>
+            <view class="sk-row sk-roaster"></view>
+            <view class="sk-footer">
+              <view class="sk-tag"></view>
+              <view class="sk-score"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view> 
+  <view class="easter-egg-modal {{showEasterEgg ? 'show' : ''}}" bindtap="closeEasterEgg">
+    
+    <view class="confetti-container {{showEasterEgg ? 'active' : ''}}">
+      <view class="confetti" wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}" wx:key="*this"></view>
+    </view>
+
+    <view class="egg-content">
+      <image 
+        class="egg-img" 
+        mode="widthFix" 
+        src="https://636c-cloud1-1gmk580edef03ce1-1392188317.tcb.qcloud.la/CoffeeCat.jpg?sign=697a723cf8a4bd08945f750e157b69f5&t=1765859320" 
+      ></image>
+      <text class="egg-text">被你发现了！🐱☕️</text>
+    </view>
+  </view>
+  </view> 

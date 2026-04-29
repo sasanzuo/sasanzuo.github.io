@@ -1,0 +1,105 @@
+<view class="page-container">
+  
+  <view class="header-section">
+    <view class="title-group">
+      <text class="coffee-name">{{coffee.name}}</text>
+    </view>
+    <view class="score-badge">
+      <text class="score-val">{{coffee.score}}</text>
+    </view>
+  </view>
+
+  <view class="product-card">
+    
+    <view class="image-box">
+      <image 
+        wx:if="{{coffee.image}}"
+        src="{{coffee.image}}" 
+        mode="aspectFill" 
+        class="hero-img"
+      ></image>
+      <view wx:else class="hero-img-placeholder">
+        <text class="placeholder-icon-large">☕️</text>
+        <text class="placeholder-text">No Image Yet</text>
+      </view>
+    </view>
+
+    <view class="info-matrix">
+      <view class="matrix-row">
+        <view class="matrix-col">
+          <text class="label">ROASTER 烘焙商</text>
+          <text class="val">{{coffee.roaster}}</text>
+        </view>
+        <view class="matrix-col text-right">
+          <text class="label">PRICE 单价</text>
+          <text class="val">¥ {{coffee.priceDisplay}} / g</text>
+        </view>
+      </view>
+
+      <view class="divider"></view>
+
+      <view class="matrix-row">
+        <view class="matrix-col">
+          <text class="label">ROASTED 烘焙日期</text>
+          <text class="val">{{coffee.roast_date}}</text>
+        </view>
+        <view class="matrix-col text-right">
+          <text class="label">OPENED 开封日期</text>
+          <text class="val">{{coffee.open_date}}</text>
+        </view>
+      </view>
+      <view class="divider"></view>
+    </view>
+
+    <view class="flavor-section" wx:if="{{coffee.flavor && coffee.flavor.length > 0}}">
+      <text class="label">TASTING NOTES 风味描述</text>
+      <view class="flavor-tags-container">
+        <block wx:for="{{coffee.flavor}}" wx:key="*this">
+          <text class="flavor-tag">{{item}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view style="height: 32rpx;"></view> </view>
+
+  <view class="specs-section">
+    <view class="section-title">BEANS PROFILE 生豆档案</view>
+    
+    <view class="bento-grid">
+      <view class="bento-item">
+        <text class="bento-label">COUNTRY 国家</text>
+        <text class="bento-val">{{coffee.country}}</text>
+      </view>
+      <view class="bento-item">
+        <text class="bento-label">REGION 产区</text>
+        <text class="bento-val">{{coffee.region}}</text>
+      </view>
+      <view class="bento-item">
+        <text class="bento-label">VARIETAL 豆种</text>
+        <text class="bento-val">{{coffee.varietal}}</text>
+      </view>
+      <view class="bento-item">
+        <text class="bento-label">PROCESS 处理法</text>
+        <text class="bento-val">{{coffee.process}}</text>
+      </view>
+      <view class="bento-item">
+        <text class="bento-label">ALTITUDE 海拔</text>
+        <text class="bento-val">{{coffee.altitude}}</text>
+      </view>
+      <view class="bento-item">
+        <text class="bento-label">PRODUCER 生产者</text>
+        <text class="bento-val">{{coffee.producer}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-remarks-section" wx:if="{{coffee.notes}}">
+    <view class="section-title">REMARKS 备注</view>
+    <view class="remark-box">
+      <text class="remark-text" user-select>{{coffee.notes}}</text>
+    </view>
+  </view>
+  
+  <view style="height: 80rpx;"></view>
+
+</view>

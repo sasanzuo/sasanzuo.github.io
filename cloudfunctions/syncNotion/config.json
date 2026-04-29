@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "triggers": [
+    {
+      "name": "refresh_coffee_1min",
+      "type": "timer",
+      "config": "0 */1 * * * * *" 
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "sync-notion",
+  "version": "1.0.0",
+  "description": "Notion Sync Function",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest",
+    "@notionhq/client": "^2.2.14",
+    "node-fetch": "^2.6.9"
+  },
+  "author": "WeChatUser",
+  "license": "ISC"
+}

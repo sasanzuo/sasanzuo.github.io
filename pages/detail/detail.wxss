@@ -1,0 +1,272 @@
+/* pages/detail/detail.wxss */
+
+/* === 全局设置 === */
+page {
+  background-color: #FAFAF9; /* 温暖的米灰色背景 */
+  color: #1C1917;
+  padding-bottom: 80rpx;
+}
+
+.page-container {
+  padding: 30rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx; /* 大模块之间的间距 */
+}
+
+/* === Zone 1: 头部信息 (标题+分数) === */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24rpx;
+  padding-top: 10rpx;
+}
+
+.title-group {
+  flex: 1;
+}
+
+.coffee-name {
+  font-size: 48rpx;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #1C1917;
+  display: block;
+}
+
+.score-badge {
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  background: #1C1917; 
+  color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  padding: 0;
+}
+
+.score-val {
+  font-size: 38rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* === Zone 2: 商品卡片 (核心视觉) === */
+.product-card {
+  background: #fff;
+  border-radius: 32rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 30rpx rgba(0,0,0,0.04);
+  border: 1rpx solid rgba(0,0,0,0.02);
+  /* 底部留一点空间，防止内容贴边 */
+  padding-bottom: 32rpx;
+}
+
+/* 1:1 图片容器 */
+.image-box {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* 强制 1:1 比例 */
+  position: relative;
+  background: #F5F5F4;
+}
+
+.hero-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 图片占位符 (当没有图片时显示) */
+.hero-img-placeholder {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F0F0F0;
+  color: #A8A29E;
+  gap: 20rpx;
+}
+
+.placeholder-icon-large {
+  font-size: 120rpx;
+  opacity: 0.2;
+  filter: grayscale(100%);
+}
+
+.placeholder-text {
+  font-size: 24rpx;
+  font-weight: 600;
+  opacity: 0.6;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+}
+
+/* 信息矩阵 (烘焙商、价格、日期) */
+.info-matrix {
+  padding: 40rpx 40rpx 0 40rpx;
+}
+
+.matrix-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.matrix-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  max-width: 60%;
+}
+
+.text-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.label {
+  font-size: 20rpx;
+  color: #A8A29E;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+  text-transform: uppercase;
+}
+
+.val {
+  font-size: 30rpx;
+  color: #1C1917;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.divider {
+  height: 1rpx;
+  background: #F5F5F4;
+  margin: 24rpx 0;
+}
+
+/* === Zone 2.5: 风味板块 (微调后) === */
+.flavor-section {
+  /* ★★★ 关键：padding 必须和 .info-matrix 保持一致 (40rpx) ★★★ */
+  /* 这样标题 "TASTING NOTES" 才能和上面的 "ROASTED" 完美左对齐 */
+  padding: 0 40rpx; 
+  
+  margin-top: 0rpx; /* 与上方日期的间距 */
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+/* 标签容器 */
+.flavor-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx; /* 紧凑间距 */
+}
+
+/* 方形标签样式 */
+.flavor-tag {
+  font-size: 22rpx; /* 小字号 */
+  color: #44403C;
+  background-color: #F3F4F6; /* 冷灰背景 */
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx; /* 方形圆角 */
+  font-weight: 500;
+}
+
+
+/* === Zone 3: 豆子档案 (Bento Grid) === */
+.specs-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.section-title {
+  font-size: 24rpx;
+  font-weight: 800;
+  color: #A8A29E;
+  letter-spacing: 2rpx;
+  margin-left: 10rpx;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.bento-item {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rpx;
+  min-height: 110rpx;
+  border: 1rpx solid rgba(0,0,0,0.02);
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.02);
+}
+
+.bento-label {
+  font-size: 18rpx;
+  font-weight: 800;
+  color: #A8A29E;
+  letter-spacing: 1rpx;
+  text-transform: uppercase;
+}
+
+.bento-val {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #44403C;
+  line-height: 1.3;
+}
+
+
+/* === Zone 4: 底部备注板块 (Footer Remarks) === */
+.footer-remarks-section {
+  /* 稍微有点内边距，为了视觉层级 */
+  padding: 0;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.remark-box {
+  background-color: #fff;
+  padding: 32rpx;
+  border-radius: 24rpx;
+  /* 轻微阴影，营造卡片感 */
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.02); 
+  border: 1rpx solid rgba(0,0,0,0.02);
+}
+
+.remark-text {
+  font-size: 28rpx;
+  color: #44403C;
+  line-height: 1.7;
+  text-align: justify;
+  display: block;
+  /* 允许长单词换行 */
+  word-wrap: break-word;
+}
+
+/* 简单的淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "get-coffee-v2", 
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "node-fetch": "^2.7.0",
+    "wx-server-sdk": "~2.6.3"
+  }
+}
