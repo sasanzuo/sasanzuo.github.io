@@ -8,9 +8,9 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV })
 const db = cloud.database()
 const _ = db.command
 
-// ★★★ 你的配置 ★★★
-const NOTION_KEY = 'NOTION_KEY_PLACEHOLDER'; 
-const DATABASE_ID = '1f0e7299241d819db537daa4eb44c572'; 
+// ★★★ 配置：从云函数环境变量或调用参数中读取，避免密钥泄露 ★★★
+const NOTION_KEY = process.env.NOTION_KEY || '请在云函数环境变量中配置 NOTION_KEY';
+const DATABASE_ID = process.env.NOTION_DATABASE_ID || '请在云函数环境变量中配置 NOTION_DATABASE_ID';
 
 // 直连 Notion (得益于你设置的 60s 超时，成功率很高)
 const notion = new Client({ auth: NOTION_KEY })
